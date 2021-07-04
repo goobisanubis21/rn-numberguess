@@ -5,12 +5,12 @@ import StartGameScreen from "./screens/StartGameScreen"
 import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
 import * as Font from 'expo-font'
-import { AppLoading } from 'expo'
+import AppLoading from 'expo-app-loading'
 
 const fetchFonts = () => {
-  Font.loadAsync({
+  return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('assets/fonts/OpenSans-Bold.ttf')
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
   })
 }
 
