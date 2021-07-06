@@ -1,17 +1,25 @@
 import React from 'react'
-import { Button, StyleSheet, View, Image } from 'react-native'
+import { Button, StyleSheet, View, Text, Image } from 'react-native'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 import BodyText from '../components/BodyText'
 
 const GameOverScreen = (props) => {
     return (
         <View style={styles.screen}>
-            <BodyText>The Game is Over</BodyText>
+            <BodyText style={styles.resultText}>The Game is Over</BodyText>
             <View style={styles.imageContainer}>
-                <Image source={require('../assets/success.png')} style={styles.image} resizeMode='cover'/>
+                <Image
+                    // use  the require() syntax is for a local image
+                    source={require('../assets/success.png')}
+                    // for a web image pass in an object with a uri key and a value of the image link
+                    // source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg'}}
+                    style={styles.image}
+                    resizeMode='cover'
+                />
             </View>
-            <BodyText>Number of Rounds: {props.roundsNumber}</BodyText>
+            <BodyText>Number of Rounds: <Text style={styles.highlight}>{props.roundsNumber}</Text></BodyText>
             <BodyText>Number was: {props.userNumber}</BodyText>
-            <Button title='New Game' onPress={props.onRestart}/>
+            <Button title='New Game' onPress={props.onRestart} />
         </View>
     )
 }
@@ -36,5 +44,12 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         overflow: 'hidden',
         marginVertical: 30
+    },
+    highlight: {
+        color: Colors.primary
+    },
+    resultText: {
+        textAlign: 'center',
+        fontSize: 20
     }
 })
