@@ -67,8 +67,8 @@ const GameScreen = (props) => {
                 <MainButton onPress={nextGuessHandler.bind(this, 'lower')}><Ionicons name={'md-remove'} size={24} color='white' /></MainButton>
                 <MainButton onPress={nextGuessHandler.bind(this, 'greater')}><Ionicons name={'md-add'} size={24} color='white' /></MainButton>
             </Card>
-            <View style={styles.list}>
-                <ScrollView>{pastGuesses.map((guess, index) => renderListItem(guess, pastGuesses.length - index))}</ScrollView>
+            <View style={styles.listContainer}>
+                <ScrollView contentContainerStyle={styles.list}>{pastGuesses.map((guess, index) => renderListItem(guess, pastGuesses.length - index))}</ScrollView>
             </View>
         </View>
     )
@@ -97,10 +97,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderWidth: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        width: '60%'
+    },
+    listContainer: {
+        flexGrow: 1,
+        width: '80%'
     },
     list: {
         flex: 1,
-        width: '80%'
+        alignItems: 'center',
+        justifyContent: 'flex-end',
     }
 })
